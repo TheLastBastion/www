@@ -1,0 +1,22 @@
+echo "\nValidating Javascript:\n"
+"$(git rev-parse --show-toplevel)/node_modules/.bin/eslint" "$(git rev-parse --show-toplevel)/src/**/*.js*"
+if [[ "$?" == 0 ]]; then
+echo "\t\033[32mESLint Passed: $?\033[0m"
+else
+  echo "\t\033[41mESLint Failed: $?\033[0m"
+  echo "\033[41mCOMMIT FAILED:\033[0m Your commit contains files that should pass ESLint but do not. Please fix the ESLint errors and try again.\n"
+exit 1
+fi
+echo "\nJavascript validation completed!\n"
+
+
+echo "\nValidating CSS:\n"
+"$(git rev-parse --show-toplevel)/node_modules/.bin/stylelint" "$(git rev-parse --show-toplevel)/src/**/*.css"
+if [[ "$?" == 0 ]]; then
+echo "\t\033[32mESLint Passed: $?\033[0m"
+else
+  echo "\t\033[41mESLint Failed: $?\033[0m"
+  echo "\033[41mCOMMIT FAILED:\033[0m Your commit contains files that should pass StyleLint but do not. Please fix the StyleLint errors and try again.\n"
+exit 1
+fi
+echo "\CSS validation completed!\n"
