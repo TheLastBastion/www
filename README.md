@@ -1,7 +1,7 @@
-This is the website for The Last Bastion. 
+This is the [website](https://thelastbastion.github.io/www/) for The Last Bastion. 
 
 # Contributors
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You'll want to read up on that before moving forward.
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You'll want to read up on that before moving forward. If you want to make a contribution, make a PR for it and make sure you follow the guidelines below.
 
 ## Linting
 In addition to the Create React App stuff, we also have some fairly strict linting set up. We use eslint (airbnb) and stylelint (stylelint-config-standard).

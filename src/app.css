@@ -1,0 +1,22 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.app__header {
+  background-color: #222;
+  color: white;
+  flex: 0 0 auto;
+  height: 150px;
+  padding: 20px;
+}
+
+.app__nav-link {
+  color: #fff;
+}
+
+.app__route {
+  flex: 1 1 auto;
+}
