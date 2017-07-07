@@ -7,6 +7,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import createHashHistory from 'history/createHashHistory';
+
 import Splash from './splash';
 
 import Games from './games';
@@ -16,6 +18,7 @@ import Rust from './games/rust';
 
 import './app.css';
 
+const history = createHashHistory();
 
 const AppRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -32,7 +35,7 @@ AppRoute.propTypes = {
 
 export default function () {
   return (
-    <Router>
+    <Router history={history}>
       <div className="app">
         <div className="app__header">
           <h1>The Last Bastion</h1>
