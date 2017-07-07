@@ -1,0 +1,8 @@
+.coming-soon {
+  align-items: center;
+  background-color: #fc0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
