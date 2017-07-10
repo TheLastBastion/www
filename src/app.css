@@ -5,12 +5,17 @@
   width: 100vw;
 }
 
-.app__header {
-  background-color: #222;
-  color: white;
+.app__content {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.app__nav-menu {
   flex: 0 0 auto;
-  height: 150px;
-  padding: 20px;
+}
+
+.app__active-route {
+  flex: 1 1 auto;
 }
 
 .app__nav-link {
