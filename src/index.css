@@ -5,6 +5,10 @@ body {
   width: 100vw;
 }
 
+*:focus {
+  outline: none;
+}
+
 #root {
   height: 100vh;
   width: 100vw;

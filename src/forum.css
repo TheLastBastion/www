@@ -1,0 +1,8 @@
+.forum {
+  display: flex;
+  flex-direction: column;
+}
+
+.forum__coming-soon {
+  flex: 1 1 auto;
+}
