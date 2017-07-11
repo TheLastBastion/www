@@ -3,19 +3,9 @@
   background-color: black;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 150px);
-  position: absolute;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  width: 100vw;
-}
-
-@media (min-width: 768px) {
-  .nav-menu {
-    position: initial;
-    width: auto;
-  }
 }
 
 .nav-menu__header {

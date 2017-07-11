@@ -33,7 +33,6 @@ const menuItems = [
 function NavMenuItem({ title, path, handleItemSelected }) {
   return (
     <Link
-      key={title}
       className="nav-menu-item"
       to={path}
       onClick={handleItemSelected}
@@ -51,6 +50,7 @@ function NavMenu({ className, handleItemSelected }) {
   const blockClassName = classNames('nav-menu', className);
   const menuItemViews = menuItems.map(menuItem => (
     <NavMenuItem
+      key={menuItem.title}
       title={menuItem.title}
       path={menuItem.path}
       handleItemSelected={handleItemSelected}

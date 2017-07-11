@@ -1,12 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
 body {
   font-family: sans-serif;
   height: 100vh;
   padding: 0;
   width: 100vw;
-}
-
-*:focus {
-  outline: none;
 }
 
 #root {
