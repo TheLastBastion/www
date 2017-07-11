@@ -24,6 +24,7 @@
 @media (min-width: 768px) {
   .app__nav-menu {
     height: calc(100vh - 150px);
+    padding: 0;
     position: initial;
     width: auto;
   }
