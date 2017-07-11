@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -126,7 +126,6 @@ class App extends Component {
             <div className="app__active-route">
               <Switch>
                 <AppRoute exact path="/" component={Splash} />
-                <AppRoute exact path="/www/" component={Splash} />
                 <AppRoute exact path="/games" component={Games} />
                 <AppRoute path="/games/space-engineers" component={SpaceEngineers} />
                 <AppRoute path="/games/minecraft" component={Minecraft} />
