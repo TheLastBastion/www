@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {
   BrowserRouter as Router,
   Route,
@@ -91,9 +92,26 @@ class App extends Component {
   render() {
     const { isSmallScreen, showNavMenu } = this.state;
 
-    const navMenu = showNavMenu ? (
-      <NavMenu className="app__nav-menu" handleItemSelected={this.handleItemSelected} />
-    ) : null;
+    let navMenuBlock;
+    if (!isSmallScreen) {
+      navMenuBlock = (
+        <NavMenu className="app__nav-menu" handleItemSelected={this.handleItemSelected} />
+      );
+    } else {
+      const navMenu = showNavMenu ? (
+        <NavMenu key="navMenu" className="app__nav-menu" handleItemSelected={this.handleItemSelected} />
+      ) : null;
+
+      navMenuBlock = (
+        <ReactCSSTransitionGroup
+          transitionName="app__nav-menu"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
+          {navMenu}
+        </ReactCSSTransitionGroup>
+      );
+    }
 
     return (
       <Router history={history}>
@@ -104,7 +122,7 @@ class App extends Component {
             isSmallScreen={isSmallScreen}
           />
           <div className="app__content">
-            {navMenu}
+            {navMenuBlock}
             <div className="app__active-route">
               <Switch>
                 <AppRoute exact path="/" component={Splash} />
