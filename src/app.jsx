@@ -126,7 +126,7 @@ class App extends Component {
             <div className="app__active-route">
               <Switch>
                 <AppRoute exact path="/" component={Splash} />
-                <AppRoute exact path="/www" component={Splash} />
+                <AppRoute exact path="/www/" component={Splash} />
                 <AppRoute exact path="/games" component={Games} />
                 <AppRoute path="/games/space-engineers" component={SpaceEngineers} />
                 <AppRoute path="/games/minecraft" component={Minecraft} />
