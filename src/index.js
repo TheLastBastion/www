@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import '../node_modules/normalize.css/normalize.css';
 import './index.scss';
 
-import app from './app';
+import app from './app/app';
 
 ReactDOM.render(
   React.createElement(app),

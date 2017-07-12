@@ -12,16 +12,16 @@ import debounce from 'lodash/debounce';
 import Header from './header/header';
 import NavMenu from './nav-menu/nav-menu';
 
-import Splash from './splash';
+import Home from './home/home';
 
 import Games from './games';
 import SpaceEngineers from './games/space-engineers';
 import Minecraft from './games/minecraft';
 import Rust from './games/rust';
 
-import Gallery from './gallery';
-import Forum from './forum';
-import CodeOfConduct from './coc';
+import Gallery from './gallery/gallery';
+import Forum from './forum/forum';
+import CodeOfConduct from './coc/coc';
 
 import './app.scss';
 
@@ -125,7 +125,7 @@ class App extends Component {
             {navMenuBlock}
             <div className="app__active-route">
               <Switch>
-                <AppRoute exact path="/" component={Splash} />
+                <AppRoute exact path="/" component={Home} />
                 <AppRoute exact path="/games" component={Games} />
                 <AppRoute path="/games/space-engineers" component={SpaceEngineers} />
                 <AppRoute path="/games/minecraft" component={Minecraft} />
