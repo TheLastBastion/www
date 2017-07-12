@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 import '../node_modules/normalize.css/normalize.css';
-import './index.css';
+import './index.scss';
 
 import app from './app';
 

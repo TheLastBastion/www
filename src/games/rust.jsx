@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import ComingSoon from '../coming-soon';
 
-import './rust.css';
+import './rust.scss';
 
 function Rust({ className }) {
   const blockClassName = classNames('rust', className);

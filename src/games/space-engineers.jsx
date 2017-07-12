@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import ComingSoon from '../coming-soon';
 
-import './space-engineers.css';
+import './space-engineers.scss';
 
 function SpaceEngineers({ className }) {
   const blockClassName = classNames('space-engineers', className);

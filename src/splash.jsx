@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import ComingSoon from './coming-soon';
 
-import './splash.css';
+import './splash.scss';
 
 function Splash({ className }) {
   const blockClassName = classNames('splash', className);

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import ComingSoon from './coming-soon';
 
-import './forum.css';
+import './forum.scss';
 
 function Forum({ className }) {
   const blockClassName = classNames('forum', className);

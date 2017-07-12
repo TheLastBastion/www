@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import ComingSoon from '../coming-soon';
 
-import './minecraft.css';
+import './minecraft.scss';
 
 function Minecraft({ className }) {
   const blockClassName = classNames('minecraft', className);

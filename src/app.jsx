@@ -23,7 +23,7 @@ import Gallery from './gallery';
 import Forum from './forum';
 import CodeOfConduct from './coc';
 
-import './app.css';
+import './app.scss';
 
 const history = createHashHistory();
 

@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import classNames from 'classnames';
 
-import './nav-menu.css';
+import './nav-menu.scss';
 
 const menuItems = [
   {

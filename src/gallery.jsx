@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import ComingSoon from './coming-soon';
 
-import './gallery.css';
+import './gallery.scss';
 
 function Gallery({ className }) {
   const blockClassName = classNames('gallery', className);

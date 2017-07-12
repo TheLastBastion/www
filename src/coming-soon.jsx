@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './coming-soon.css';
+import './coming-soon.scss';
 
 function ComingSoon({ className }) {
   const blockClassName = classNames('coming-soon', className);

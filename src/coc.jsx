@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import ComingSoon from './coming-soon';
 
-import './coc.css';
+import './coc.scss';
 
 function CodeOfConduct({ className }) {
   const blockClassName = classNames('coc', className);

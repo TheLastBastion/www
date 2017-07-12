@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import 'hamburgers/dist/hamburgers.min.css';
-import './header.css';
+import './header.scss';
 
 function Hamburger({ isActive, toggleMenu }) {
   const blockClassName = classNames('hamburger', 'hamburger--emphatic', {
