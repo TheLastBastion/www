@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import 'hamburgers/dist/hamburgers.min.css';
+
+import { isSmall, isTablet } from '../utils/screen';
+
 import './header.scss';
 
 function Hamburger({ isActive, toggleMenu }) {
@@ -23,21 +26,20 @@ Hamburger.propTypes = {
   toggleMenu: PropTypes.func.isRequired,
 };
 
-function Header({ isSmallScreen, showNavMenu, toggleMenu }) {
-  const mobileMenuButton = !isSmallScreen ? null : (
+function Header({ showNavMenu, toggleMenu }) {
+  const smallScreenMenuButton = isSmall() || isTablet() ? (
     <Hamburger isActive={showNavMenu} toggleMenu={toggleMenu} />
-  );
+  ) : null;
 
   return (
     <div className="header">
-      {mobileMenuButton}
+      {smallScreenMenuButton}
       <h1>The Last Bastion</h1>
     </div>
   );
 }
 
 Header.propTypes = {
-  isSmallScreen: PropTypes.bool.isRequired,
   showNavMenu: PropTypes.bool,
   toggleMenu: PropTypes.func,
 };

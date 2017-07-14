@@ -23,6 +23,8 @@ import Gallery from './gallery/gallery';
 import Forum from './forum/forum';
 import CodeOfConduct from './coc/coc';
 
+import { isSmall, isTablet, isDesktop, isXL } from './utils/screen';
+
 import './app.scss';
 
 const history = createHashHistory();
@@ -40,18 +42,12 @@ AppRoute.propTypes = {
   component: PropTypes.func.isRequired,
 };
 
-function getIsSmallScreen() {
-  return window.innerWidth < 768;
-}
-
 class App extends Component {
   constructor() {
     super();
 
-    const isSmallScreen = getIsSmallScreen();
     this.state = {
-      isSmallScreen,
-      showNavMenu: !isSmallScreen,
+      showNavMenu: isDesktop() || isXL(),
     };
 
     this.updateDimensions = debounce(this.updateDimensions.bind(this), 150);
@@ -68,15 +64,13 @@ class App extends Component {
   }
 
   updateDimensions() {
-    const isSmallScreen = getIsSmallScreen();
     this.setState({
-      isSmallScreen,
-      showNavMenu: !isSmallScreen ? true : this.state.showNavMenu,
+      showNavMenu: (isDesktop() || isXL()) ? true : this.state.showNavMenu,
     });
   }
 
   handleItemSelected() {
-    if (this.state.isSmallScreen) {
+    if (isSmall() || isTablet()) {
       this.setState({
         showNavMenu: false,
       });
@@ -90,10 +84,10 @@ class App extends Component {
   }
 
   render() {
-    const { isSmallScreen, showNavMenu } = this.state;
+    const { showNavMenu } = this.state;
 
     let navMenuBlock;
-    if (!isSmallScreen) {
+    if (isDesktop() || isXL()) {
       navMenuBlock = (
         <NavMenu className="app__nav-menu" handleItemSelected={this.handleItemSelected} />
       );
@@ -119,7 +113,6 @@ class App extends Component {
           <Header
             showNavMenu={showNavMenu}
             toggleMenu={this.toggleMenu}
-            isSmallScreen={isSmallScreen}
           />
           <div className="app__content">
             {navMenuBlock}

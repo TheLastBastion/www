@@ -1,3 +1,5 @@
+@import 'media-queries';
+
 .app {
   display: flex;
   flex-direction: column;
@@ -21,12 +23,17 @@
   width: 100vw;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $tablet) {
+  .app__nav-menu {
+    width: auto;
+  }
+}
+
+@media (min-width: $desktop) {
   .app__nav-menu {
     height: calc(100vh - 150px);
     padding: 0;
     position: initial;
-    width: auto;
   }
 }
 
