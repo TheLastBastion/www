@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'emotion';
 import classNames from 'classnames';
 
-import ComingSoon from '../coming-soon/coming-soon';
-
-import './forum.scss';
+import ComingSoon from './ComingSoon';
 
 function Forum({ className }) {
-  const blockClassName = classNames('forum', className);
+  const blockClassName = classNames(css`
+    display: flex;
+    flex-direction: column;
+  `, className);
   return (
-    <div className={blockClassName}>
-      <h2>This is the forum page</h2>
-      <ComingSoon className="forum__coming-soon" />
-    </div>
+    <ComingSoon className={blockClassName} sectionTitle="Forum" />
   );
 }
 

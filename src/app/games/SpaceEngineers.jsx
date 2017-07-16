@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'emotion';
 import classNames from 'classnames';
 
-import ComingSoon from '../coming-soon/coming-soon';
-
-import './space-engineers.scss';
+import ComingSoon from '../ComingSoon';
 
 function SpaceEngineers({ className }) {
-  const blockClassName = classNames('space-engineers', className);
+  const blockClassName = classNames(css`
+    display: flex;
+    flex-direction: column;
+  `, className);
   return (
-    <div className={blockClassName}>
-      <h2>This is Space Engineers</h2>
-      <ComingSoon className="space-engineers__coming-soon" />
-    </div>
+    <ComingSoon className={blockClassName} sectionTitle="Space Engineers" />
   );
 }
 

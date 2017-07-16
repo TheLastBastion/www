@@ -168,6 +168,10 @@ module.exports = {
         options: {
 
           compact: true,
+
+          plugins: [
+            ['emotion/babel', { inline: true }],
+          ],
         },
       },
       // The notation here is somewhat confusing.

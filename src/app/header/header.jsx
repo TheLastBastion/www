@@ -1,38 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
 import 'hamburgers/dist/hamburgers.min.css';
+import { css } from 'emotion';
+import { withTheme } from 'theming';
+
+import HeaderHamburger from './HeaderHamburger';
 
 import { isSmall, isTablet } from '../utils/screen';
 
-import './header.scss';
-
-function Hamburger({ isActive, toggleMenu }) {
-  const blockClassName = classNames('hamburger', 'hamburger--emphatic', {
-    'is-active': isActive,
-  });
-  return (
-    <button className={blockClassName} type="button" onClick={toggleMenu}>
-      <span className="hamburger-box">
-        <span className="hamburger-inner" />
-      </span>
-    </button>
-  );
-}
-
-Hamburger.propTypes = {
-  isActive: PropTypes.bool.isRequired,
-  toggleMenu: PropTypes.func.isRequired,
-};
-
-function Header({ showNavMenu, toggleMenu }) {
+function Header({ showNavMenu, theme, toggleMenu }) {
   const smallScreenMenuButton = isSmall() || isTablet() ? (
-    <Hamburger isActive={showNavMenu} toggleMenu={toggleMenu} />
+    <HeaderHamburger isActive={showNavMenu} toggleMenu={toggleMenu} />
   ) : null;
 
+  const blockClassName = css`
+    background-color: ${theme.colors.backgroundColorDark};
+    color: white;
+    flex: 0 0 auto;
+    height: 150px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+  `;
+
   return (
-    <div className="header">
+    <div className={blockClassName}>
       {smallScreenMenuButton}
       <h1>The Last Bastion</h1>
     </div>
@@ -41,6 +33,11 @@ function Header({ showNavMenu, toggleMenu }) {
 
 Header.propTypes = {
   showNavMenu: PropTypes.bool,
+  theme: PropTypes.shape({
+    colors: PropTypes.shape[{
+      backgroundColorDark: PropTypes.string,
+    }],
+  }).isRequired,
   toggleMenu: PropTypes.func,
 };
 
@@ -49,4 +46,4 @@ Header.defaultProps = {
   toggleMenu: () => {},
 };
 
-export default Header;
+export default withTheme(Header);

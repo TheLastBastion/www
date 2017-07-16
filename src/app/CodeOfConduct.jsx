@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'emotion';
 import classNames from 'classnames';
 
-import ComingSoon from '../coming-soon/coming-soon';
-
-import './coc.scss';
+import ComingSoon from './ComingSoon';
 
 function CodeOfConduct({ className }) {
-  const blockClassName = classNames('coc', className);
+  const blockClassName = classNames(css`
+    display: flex;
+    flex-direction: column;
+  `, className);
   return (
-    <div className={blockClassName}>
-      <h2>This is the coc page</h2>
-      <ComingSoon className="coc__coming-soon" />
-    </div>
+    <ComingSoon className={blockClassName} sectionTitle="Code of Conduct" />
   );
 }
 

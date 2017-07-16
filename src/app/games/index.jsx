@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'emotion/react';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
 
-import './index.scss';
+import GameTile from './GameTile';
 
 const games = [
   {
@@ -20,23 +20,25 @@ const games = [
   },
 ];
 
-function GameTile(game, index) {
-  return (
-    <Link key={index} className="game-tile" to={game.path}>{game.title}</Link>
-  );
-}
+const GamesStyled = styled('div')`
+  .games__game-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+`;
 
 function Games({ className }) {
   const blockClassName = classNames('games', className);
   const gameTiles = games.map(GameTile);
 
   return (
-    <div className={blockClassName}>
+    <GamesStyled className={blockClassName}>
       <h2>Games!</h2>
       <div className="games__game-tiles">
         {gameTiles}
       </div>
-    </div>
+    </GamesStyled>
   );
 }
 

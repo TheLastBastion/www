@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'emotion';
 import classNames from 'classnames';
 
-import ComingSoon from '../coming-soon/coming-soon';
-
-import './rust.scss';
+import ComingSoon from '../ComingSoon';
 
 function Rust({ className }) {
-  const blockClassName = classNames('rust', className);
+  const blockClassName = classNames(css`
+    display: flex;
+    flex-direction: column;
+  `, className);
   return (
-    <div className={blockClassName}>
-      <h2>This is Rust</h2>
-      <ComingSoon className="rust__coming-soon" />
-    </div>
+    <ComingSoon className={blockClassName} sectionTitle="Rust" />
   );
 }
 
