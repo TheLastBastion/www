@@ -87,6 +87,10 @@ function NavMenuItem({ theme, title, path, handleItemSelected, location, index }
     &:focus {
       font-size: ${itemFontSizeEnd}px;
       opacity: 1;
+
+      &::after {
+        opacity: 1;
+      }
     }
   `;
 
