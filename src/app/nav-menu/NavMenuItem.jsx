@@ -9,48 +9,61 @@ const itemSpeed = 600;
 const itemFontSizeStart = 24;
 const itemFontSizeEnd = 26;
 
-const openMenu = keyframes`
-  0% {
-    font-size: ${itemFontSizeStart}px;
-    opacity: 0.7;
-    transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
-  }
-
-  50% {
-    opacity: 1;
-    font-size: ${itemFontSizeEnd}px;
-    transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
-  }
-
-  100% {
-    font-size: ${itemFontSizeStart}px;
-    opacity: 0.7;
-    transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
-  }
-`;
-
-const openMenuAfter = keyframes`
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-`;
-
 function getAnimationDelay(index) {
   return (index * (itemSpeed / 12)) + (itemSpeed / 1.5);
 }
 
 function NavMenuItem({ theme, title, path, handleItemSelected, location, index }) {
   const { backgroundColorDark } = theme.colors;
-  const baseClassName = css`
+  const isActive = location.pathname === path;
 
+  const openMenu = keyframes`
+    0% {
+      font-size: ${itemFontSizeStart}px;
+      opacity: ${isActive ? 1 : 0.7};
+      transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
+
+      &.is-active,
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+
+    50% {
+      opacity: 1;
+      font-size: ${itemFontSizeEnd}px;
+      transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
+    }
+
+    100% {
+      font-size: ${itemFontSizeStart}px;
+      opacity: ${isActive ? 1 : 0.7};
+      transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
+
+      &.is-active,
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+  `;
+
+  const openMenuAfter = keyframes`
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  `;
+
+  const baseClassName = css`
     align-items: center;
     animation: ${openMenu} ${itemSpeed}ms ease ${getAnimationDelay(index)}ms;
     color: inherit;
@@ -95,7 +108,7 @@ function NavMenuItem({ theme, title, path, handleItemSelected, location, index }
   `;
 
   const blockClassName = classNames(baseClassName, {
-    'is-active': location.pathname === path,
+    'is-active': isActive,
   });
   return (
     <Link
