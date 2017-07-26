@@ -1,26 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'hamburgers/dist/hamburgers.min.css';
 import styled from 'emotion/react';
 import classNames from 'classnames';
+
+import './header-hamburger.scss';
 
 const HeaderHamburgerStyled = styled('div')`
   left: 20px;
   position: absolute;
-
-  .hamburger {
-    opacity: 0.7;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    .hamburger-inner,
-    .hamburger-inner::after,
-    .hamburger-inner::before {
-      background-color: white;
-    }
-  }
 `;
 
 function HeaderHamburger({ isActive, toggleMenu }) {
