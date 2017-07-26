@@ -1,8 +1,0 @@
-.splash {
-  display: flex;
-  flex-direction: column;
-}
-
-.splash__coming-soon {
-  flex: 1 1 auto;
-}

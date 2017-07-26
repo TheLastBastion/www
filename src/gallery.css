@@ -1,8 +1,0 @@
-.gallery {
-  display: flex;
-  flex-direction: column;
-}
-
-.gallery__coming-soon {
-  flex: 1 1 auto;
-}

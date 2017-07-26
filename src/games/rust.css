@@ -1,8 +1,0 @@
-.rust {
-  display: flex;
-  flex-direction: column;
-}
-
-.rust__coming-soon {
-  flex: 1 1 auto;
-}

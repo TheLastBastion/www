@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  font-family: 'Bitter', serif;
+  font-family: 'Aldrich', sans-serif;
+  height: 100vh;
+  padding: 0;
+  width: 100vw;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
