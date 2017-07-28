@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'emotion/react';
-import classNames from 'classnames';
+import { withTheme } from 'theming';
 
 import GameTile from './GameTile';
 
@@ -20,21 +20,30 @@ const games = [
   },
 ];
 
-const GamesStyled = styled('div')`
-  .games__game-tiles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-`;
 
-function Games({ className }) {
-  const blockClassName = classNames('games', className);
+function Games({ className, theme }) {
+  const GamesStyled = styled('div')`
+    align-items: center;
+    background-color: ${theme.colors.backgroundColorLight};
+    display: flex;
+    flex-direction: column;
+
+    .games__header {
+
+    }
+
+    .games__game-tiles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  `;
+
   const gameTiles = games.map(GameTile);
 
   return (
-    <GamesStyled className={blockClassName}>
-      <h2>Games!</h2>
+    <GamesStyled className={className}>
+      <h2 className="games__header">The Games We Love</h2>
       <div className="games__game-tiles">
         {gameTiles}
       </div>
@@ -44,10 +53,15 @@ function Games({ className }) {
 
 Games.propTypes = {
   className: PropTypes.string,
+  theme: PropTypes.shape({
+    colors: PropTypes.shape[{
+      backgroundColorDark: PropTypes.string,
+    }],
+  }).isRequired,
 };
 
 Games.defaultProps = {
   className: '',
 };
 
-export default Games;
+export default withTheme(Games);
