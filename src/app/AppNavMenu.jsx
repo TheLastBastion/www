@@ -2,16 +2,11 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
-import classNames from 'classnames';
 
 import { TABLET, DESKTOP } from './constants/media-queries';
 import NavMenu from './nav-menu/NavMenu';
 
-import { isDesktop, isXL } from './utils/screen';
-
-
 const menuSpeed = 400;
-
 
 const className = css`
   bottom: 0;
@@ -53,15 +48,8 @@ const className = css`
 `;
 
 function AppNavMenu({ showNavMenu, handleItemSelected }) {
-  const blockClassName = classNames('app-nav-menu', className);
-  if (isDesktop() || isXL()) {
-    return (
-      <NavMenu className={blockClassName} handleItemSelected={handleItemSelected} />
-    );
-  }
-
   const navMenu = showNavMenu ? (
-    <NavMenu key="navMenu" className={blockClassName} handleItemSelected={handleItemSelected} />
+    <NavMenu key="navMenu" className={className} handleItemSelected={handleItemSelected} />
   ) : null;
 
   return (

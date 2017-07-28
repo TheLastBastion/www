@@ -75,6 +75,7 @@ class App extends Component {
     const { showNavMenu } = this.state;
 
     const blockClassName = css`
+      background-color: ${theme.colors.backgroundColorDark}
       display: flex;
       flex-direction: column;
       height: 100vh;
