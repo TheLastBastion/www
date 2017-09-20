@@ -7,14 +7,16 @@ import NewsPost from './NewsPost';
 
 function News({ className }) {
   const blockClassName = classNames(css`
+    align-items: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   `, className);
 
   const newsPosts = [
     {
       id: 1,
-      title: 'Welcome to the site!',
+      title: 'Coming Soon!',
       content: (
         <div>
           <iframe title="space-battle" width="560" height="315" src="https://www.youtube.com/embed/c2BhzUfBEaw" frameBorder="0" allowFullScreen />

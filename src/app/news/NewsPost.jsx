@@ -12,6 +12,10 @@ class NewsPost extends PureComponent {
       flex-direction: column;
       padding: 20px;
 
+      .news-post__header {
+        margin: 0 0 24px;
+      }
+
       .news-post__content {
         align-self: center;
       }
@@ -19,7 +23,7 @@ class NewsPost extends PureComponent {
 
     return (
       <div className={blockClassName}>
-        <h3>{newsPost.title}</h3>
+        <h3 className="news-post__header">{newsPost.title}</h3>
         <div className="news-post__content">{newsPost.content}</div>
       </div>
     );

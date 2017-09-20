@@ -14,16 +14,9 @@ import AppRoute from './AppRoute';
 
 import Splash from './splash/Splash';
 
+import Auth from './auth/Auth';
+
 import News from './news/News';
-
-import Games from './games';
-import SpaceEngineers from './games/SpaceEngineers';
-import Minecraft from './games/Minecraft';
-import Rust from './games/Rust';
-
-import Gallery from './Gallery';
-import Forum from './Forum';
-import CodeOfConduct from './CodeOfConduct';
 
 const history = createHashHistory();
 
@@ -51,15 +44,9 @@ function App() {
           <AppNavMenu />
           <div className="app__active-route">
             <Switch>
-              <AppRoute exact path="/" component={Splash} />
-              <AppRoute exact path="/news" component={News} />
-              <AppRoute exact path="/games" component={Games} />
-              <AppRoute path="/games/space-engineers" component={SpaceEngineers} />
-              <AppRoute path="/games/minecraft" component={Minecraft} />
-              <AppRoute path="/games/rust" component={Rust} />
-              <AppRoute path="/gallery" component={Gallery} />
-              <AppRoute path="/forum" component={Forum} />
-              <AppRoute path="/coc" component={CodeOfConduct} />
+              <AppRoute exact path="/splash" component={Splash} />
+              <AppRoute exact path="/auth" component={Auth} />
+              <AppRoute path="/" component={News} />
             </Switch>
           </div>
         </div>
