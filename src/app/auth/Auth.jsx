@@ -51,7 +51,7 @@ class Auth extends Component {
 
 
   getAccount = () => {
-    fetch('http://localhost:3000/account', {
+    fetch('https://localhost:3000/account', {
       method: 'GET',
       credentials: 'include',
       mode: 'cors',
@@ -75,7 +75,7 @@ class Auth extends Component {
   };
 
   login = () => {
-    const authWindow = window.open('http://localhost:3000/auth/steam');
+    const authWindow = window.open('https://localhost:3000/auth/steam');
     const interval = window.setInterval(() => {
       if (authWindow == null || authWindow.closed) {
         window.clearInterval(interval);
@@ -84,7 +84,7 @@ class Auth extends Component {
   };
 
   logout = () => {
-    fetch('http://localhost:3000/logout', {
+    fetch('https://localhost:3000/logout', {
       method: 'GET',
       credentials: 'include',
       mode: 'cors',
