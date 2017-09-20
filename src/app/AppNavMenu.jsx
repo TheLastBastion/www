@@ -1,83 +1,107 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import PropTypes from 'prop-types';
 import { css } from 'emotion';
-import classNames from 'classnames';
 
-import { TABLET, DESKTOP } from './constants/media-queries';
+import { navMenuTransitionSpeed } from './constants/animation-constants';
+import { TABLET } from './constants/media-queries';
+
+import MenuHamburger from './nav-menu/MenuHamburger';
 import NavMenu from './nav-menu/NavMenu';
 
-import { isDesktop, isXL } from './utils/screen';
+import { isSmall, isTablet } from './utils/screen';
 
-
-const menuSpeed = 400;
-
-
-const className = css`
-  bottom: 0;
-  flex: 0 0 auto;
-  height: 100vh;
-  padding: 150px 0 0;
-  position: absolute;
-  width: 100vw;
-
-  @media (min-width: ${TABLET}px) {
-    width: 300px;
+class AppNavMenu extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showNavMenu: false,
+    };
   }
 
-  @media (min-width: ${DESKTOP}px) {
-    height: calc(100vh - 150px);
-    padding: 0;
-    position: initial;
+  // TODO test this behaviour
+  handleItemSelected = () => {
+    if (isSmall() || isTablet()) {
+      this.setState({
+        showNavMenu: false,
+      });
+    }
   }
 
-  &.app-nav-menu-enter {
-    transform: translateY(-100%);
+  toggleMenu = () => {
+    this.setState({
+      showNavMenu: !this.state.showNavMenu,
+    });
   }
 
-  &.app-nav-menu-enter.app-nav-menu-enter-active {
-    transform: translateY(0);
-    transition: transform ${menuSpeed}ms cubic-bezier(0.72, 1, 0.13, 0.52);
-    transition: transform ${menuSpeed}ms cubic-bezier(0.72, 1.93, 0.13, 0.52);
-  }
+  render() {
+    const { showNavMenu } = this.state;
 
-  &.app-nav-menu-leave {
-    transform: translateY(0);
-  }
+    const blockClassName = css`
+      display: flex;
+      position: fixed;
+      width: 100vw;
+      z-index: 2;
 
-  &.app-nav-menu-leave.app-nav-menu-leave-active {
-    transform: translateY(-100%);
-    transition: transform ${menuSpeed}ms cubic-bezier(0.6, 0, 0.735, 0.045);
-    transition: transform ${menuSpeed}ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  }
-`;
+      @media (min-width: ${TABLET}px) {
+        width: 300px;
+      }
 
-function AppNavMenu({ showNavMenu, handleItemSelected }) {
-  const blockClassName = classNames('app-nav-menu', className);
-  if (isDesktop() || isXL()) {
+      .app-nav-menu__hamburger {
+        z-index: 2;
+      }
+
+      .app-nav-menu__nav-menu {
+        flex: 0 0 auto;
+        height: 100vh;
+        left: 0;
+        padding: 150px 0 0;
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        z-index: 1;
+
+        @media (min-width: ${TABLET}px) {
+          width: 300px;
+        }
+
+        &.app-nav-menu__nav-menu-enter {
+          transform: translateX(-100%);
+        }
+
+        &.app-nav-menu__nav-menu-enter.app-nav-menu__nav-menu-enter-active {
+          transform: translateX(0);
+          transition: transform ${navMenuTransitionSpeed}ms ease-out;
+        }
+
+        &.app-nav-menu__nav-menu-leave {
+          transform: translateX(0);
+        }
+
+        &.app-nav-menu__nav-menu-leave.app-nav-menu__nav-menu-leave-active {
+          transform: translateX(-100%);
+          transition: transform ${navMenuTransitionSpeed}ms ease-in;
+        }
+      }
+    `;
+
+    const navMenu = showNavMenu ? (
+      <NavMenu key="navMenu" className="app-nav-menu__nav-menu" handleItemSelected={this.handleItemSelected} />
+    ) : null;
+
     return (
-      <NavMenu className={blockClassName} handleItemSelected={handleItemSelected} />
+      <div className={blockClassName}>
+        <MenuHamburger className="app-nav-menu__hamburger" isActive={showNavMenu} toggleMenu={this.toggleMenu} />
+        <ReactCSSTransitionGroup
+          className="app-nav-menu__transition-group"
+          transitionName="app-nav-menu__nav-menu"
+          transitionEnterTimeout={navMenuTransitionSpeed}
+          transitionLeaveTimeout={navMenuTransitionSpeed}
+        >
+          {navMenu}
+        </ReactCSSTransitionGroup>
+      </div>
     );
   }
-
-  const navMenu = showNavMenu ? (
-    <NavMenu key="navMenu" className={blockClassName} handleItemSelected={handleItemSelected} />
-  ) : null;
-
-  return (
-    <ReactCSSTransitionGroup
-      transitionName="app-nav-menu"
-      transitionEnterTimeout={menuSpeed}
-      transitionLeaveTimeout={menuSpeed}
-    >
-      {navMenu}
-    </ReactCSSTransitionGroup>
-  );
 }
-
-AppNavMenu.propTypes = {
-  showNavMenu: PropTypes.bool.isRequired,
-  handleItemSelected: PropTypes.func.isRequired,
-};
 
 export default AppNavMenu;

@@ -35,9 +35,18 @@ const menuItems = [
 const NavMenuItemWithRouter = withRouter(NavMenuItem);
 
 function NavMenu({ className, handleItemSelected, theme }) {
+  const {
+    colors: {
+      backgroundColorDark,
+    },
+    size: {
+      xxl,
+    },
+  } = theme;
+
   const baseClassName = css`
     color: white;
-    background-color: ${theme.colors.backgroundColorDark};
+    background-color: ${backgroundColorDark};
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -46,10 +55,10 @@ function NavMenu({ className, handleItemSelected, theme }) {
     .nav-menu__header {
       align-items: center;
       display: flex;
-      font-size: 28px;
-      height: 64px;
+      flex: 0 0 auto;
+      font-size: ${xxl};
       justify-content: center;
-      padding: 8px;
+      padding: 0.5em;
       text-decoration: inherit;
       text-transform: inherit;
     }
@@ -81,6 +90,9 @@ NavMenu.propTypes = {
     colors: PropTypes.shape[{
       backgroundColorDark: PropTypes.string,
     }],
+    size: PropTypes.shape({
+      xxl: PropTypes.string,
+    }),
   }).isRequired,
 };
 
