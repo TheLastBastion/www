@@ -1,6 +1,6 @@
 {
   "name": "tlb-www",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "private": true,
   "homepage": "https://TheLastBastion.github.io/www",
   "dependencies": {
