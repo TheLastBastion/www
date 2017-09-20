@@ -5,23 +5,25 @@ import { css, keyframes } from 'emotion';
 import classNames from 'classnames';
 import { withTheme } from 'theming';
 
-const itemSpeed = 600;
-const itemFontSizeStart = 24;
-const itemFontSizeEnd = 26;
+import { navMenuTransitionSpeed } from '../constants/animation-constants';
+
+const transitionLength = 600;
 
 function getAnimationDelay(index) {
-  return (index * (itemSpeed / 12)) + (itemSpeed / 1.5);
+  return (index * (transitionLength / 12)) + navMenuTransitionSpeed;
 }
 
 function NavMenuItem({ theme, title, path, handleItemSelected, location, index }) {
   const { backgroundColorDark } = theme.colors;
+  const { xl } = theme.size;
+  const itemFontSizeStart = xl;
+  const itemFontSizeEnd = `${window.Number.parseFloat(itemFontSizeStart) * 1.1}rem`;
   const isActive = location.pathname === path;
 
   const openMenu = keyframes`
     0% {
-      font-size: ${itemFontSizeStart}px;
+      font-size: ${itemFontSizeStart};
       opacity: ${isActive ? 1 : 0.7};
-      transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
 
       &.is-active,
       &:hover,
@@ -32,14 +34,12 @@ function NavMenuItem({ theme, title, path, handleItemSelected, location, index }
 
     50% {
       opacity: 1;
-      font-size: ${itemFontSizeEnd}px;
-      transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
+      font-size: ${itemFontSizeEnd};
     }
 
     100% {
-      font-size: ${itemFontSizeStart}px;
+      font-size: ${itemFontSizeStart};
       opacity: ${isActive ? 1 : 0.7};
-      transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
 
       &.is-active,
       &:hover,
@@ -65,20 +65,21 @@ function NavMenuItem({ theme, title, path, handleItemSelected, location, index }
 
   const baseClassName = css`
     align-items: center;
-    animation: ${openMenu} ${itemSpeed}ms ease ${getAnimationDelay(index)}ms;
+    animation: ${openMenu} ${transitionLength}ms ease ${getAnimationDelay(index)}ms;
     color: inherit;
     display: flex;
-    font-size: ${itemFontSizeStart}px;
-    height: 58px;
+    flex: 0 0 auto;
+    font-size: ${itemFontSizeStart};
     justify-content: center;
     opacity: 0.7;
-    padding: 8px;
+    padding: 0.5em;
     position: relative;
     text-decoration: inherit;
     text-transform: inherit;
-    transition: opacity ${itemSpeed}ms, font-size ${itemSpeed}ms;
+    transition: opacity ${transitionLength}ms, font-size ${transitionLength}ms;
 
     &::after {
+      animation: ${openMenuAfter} ${transitionLength}ms ease ${getAnimationDelay(index)}ms;
       background-image: linear-gradient(to right, ${backgroundColorDark} 10%, white, ${backgroundColorDark} 90%);
       bottom: 8px;
       content: "";
@@ -87,9 +88,8 @@ function NavMenuItem({ theme, title, path, handleItemSelected, location, index }
       opacity: 0;
       position: absolute;
       transform: translateX(-50%);
-      transition: opacity ${itemSpeed}ms;
+      transition: opacity ${transitionLength}ms;
       width: 300px;
-      animation: ${openMenuAfter} ${itemSpeed}ms ease ${getAnimationDelay(index)}ms;
     }
 
     &.is-active {
@@ -98,7 +98,7 @@ function NavMenuItem({ theme, title, path, handleItemSelected, location, index }
 
     &:hover,
     &:focus {
-      font-size: ${itemFontSizeEnd}px;
+      font-size: ${itemFontSizeEnd};
       opacity: 1;
 
       &::after {
@@ -125,6 +125,9 @@ NavMenuItem.propTypes = {
     colors: PropTypes.shape[{
       backgroundColorDark: PropTypes.string,
     }],
+    size: PropTypes.shape({
+      xl: PropTypes.string,
+    }),
   }).isRequired,
   title: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,

@@ -9,7 +9,9 @@ const GameTileStyled = styled(Link)`
 
 function GameTile(game, index) {
   return (
-    <GameTileStyled key={index} to={game.path}>{game.title}</GameTileStyled>
+    <GameTileStyled key={index} to={game.path}>{game.title}
+      <img src={game.img} alt={game.title} />
+    </GameTileStyled>
   );
 }
 
